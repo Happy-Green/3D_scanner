@@ -1,0 +1,35 @@
+/dts-v1/;
+/plugin/;
+/ {
+	compatible = "brcm,bcm2835";
+	fragment@0 {
+		target-path = "/";
+		__overlay__ {
+			servo_xy {
+				compatible = "happygreen, servo";
+				status = "okay";
+				label = "servo_pwm_xy";
+                pwm_channel = <1>;
+				pwm_freq = <20000000>; /* sets in ns EXAMPLE: 50hz -> 1/50*1E9 = 20000000 */
+				pwm_duty_cycle_stop = <1492000>; /* sets in ns */
+				pwm_duty_cycle_slow_move = <1460000>; /* sets in ns */
+				pwm_duty_cycle_fast_move = <1400000>; /* sets in ns */
+				servo_move = "STOP"; /* STOP; SLOW; FAST */
+			};
+
+			servo_z {
+				compatible = "happygreen, servo";
+				status = "okay";
+				label = "servo_pwm_z";
+                pwm_channel = <0>;
+				pwm_freq = <20000000>; /* sets in ns EXAMPLE: 50hz -> 1/50*1E9 = 20000000 */
+				pwm_duty_cycle_stop = <1492000>; /* sets in ns */
+				pwm_duty_cycle_slow_move = <1540000>; /* sets in ns */
+				pwm_duty_cycle_fast_move = <1400000>; /* sets in ns */
+				servo_move = "STOP"; /* STOP; SLOW; FAST */
+			};
+		};
+	};
+
+
+};

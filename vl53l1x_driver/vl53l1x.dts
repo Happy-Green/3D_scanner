@@ -1,0 +1,27 @@
+/dts-v1/;
+/plugin/;
+/{
+	compatible = "brcm,bcm2835";
+	fragment@0 {
+		target = <&i2c1>;
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			 vl53l1xc: vl53l1xc@29 {
+				compatible = "st,vl53l1x";
+				reg = <0x29>;
+				status = "okay";
+				interrupt-parent = <&gpio>;
+				interrupts = <17 1>;
+			};
+			 vl53l1xl: vl53l1xl@43 {
+				compatible = "st,vl53l1x";
+				reg = <0x43>;
+				status = "okay";
+				interrupt-parent = <&gpio>;
+				interrupts = <27 1>;
+			};
+		};
+	};
+};
